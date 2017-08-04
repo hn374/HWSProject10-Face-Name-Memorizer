@@ -17,5 +17,17 @@ class Person: NSObject {
         self.name = name
         self.image = image
     }
+    
+    //used when loading objects of this class
+    required init(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        image = aDecoder.decodeObject(forKey: "image") as! String
+    }
+    
+    //used when saving objects of this class
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(image, forKey: "image")
+    }
 
 }
